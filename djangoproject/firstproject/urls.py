@@ -20,4 +20,5 @@ import wordcount.views ## wordcount 폴더안의 views.py 파일 갖고오기
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', wordcount.views.home, name="home"),
+    path('about/', wordcount.views.about, name="about"),
 ]
