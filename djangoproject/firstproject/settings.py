@@ -25,7 +25,7 @@ SECRET_KEY = '@9i(qlb*6ty$fm=m26_h2g=3l*q@4lik*fkr3x4+#b$^6odp9_'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'wordcount.apps.WordCountConfig', ## wordcount 폴더 안에 있는 apps 파일 안의 WordcountConfig class를 등록하는 절차
 ]
 
 MIDDLEWARE = [
@@ -105,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 
 USE_I18N = True
 
