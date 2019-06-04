@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'wordcount.apps.WordCountConfig', ## wordcount 폴더 안에 있는 apps 파일 안의 WordcountConfig class를 등록하는 절차
+    'wordcount',
+    # 'wordcount.apps.WordCountConfig', ## wordcount 폴더 안에 있는 apps 파일 안의 WordcountConfig class를 등록하는 절차
 ]
 
 MIDDLEWARE = [
