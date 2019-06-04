@@ -8,3 +8,20 @@ def home(request):
     
 def about(request):
     return render(request, 'about.html')
+    
+    
+def result(request):
+    text = request.GET.get('fulltext')
+    # request.GET['fulltext'] 로 받으려면 html파일에서 method="GET" 추가할 것
+    words = text.split()
+    word_dictionary = {}
+    
+    for word in words:
+        if word in word_dictionary:
+            # increase
+            word_dictionary[word]+=1
+        else:
+            # add to dictionary
+            word_dictionary[word]=1
+            
+    return render(request, 'result.html', {'full': text, 'total': len(words), 'dictionary': word_dictionary.items()})
