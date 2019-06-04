@@ -11,7 +11,7 @@ def about(request):
     
     
 def result(request):
-    text = request.GET.get('fulltext')
+    text = request.POST.get('fulltext')
     # request.GET['fulltext'] 로 받으려면 html파일에서 method="GET" 추가할 것
     words = text.split()
     word_dictionary = {}
