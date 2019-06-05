@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import collections, re, string
 
 # Create your views here.
 def home(request):
@@ -13,7 +14,7 @@ def about(request):
 def result(request):
     text = request.POST.get('fulltext')
     # request.GET['fulltext'] 로 받으려면 html파일에서 method="GET" 추가할 것
-    words = text.split()
+    words = re.sub('['+string.punctuation+']', '', text).split() # 문장부호 및 공백 제거
     word_dictionary = {}
     
     for word in words:
@@ -23,5 +24,7 @@ def result(request):
         else:
             # add to dictionary
             word_dictionary[word]=1
+    
+    word_dictionary = collections.OrderedDict(sorted(word_dictionary.items())) # 오름차순 정렬
             
     return render(request, 'result.html', {'full': text, 'total': len(words), 'dictionary': word_dictionary.items()})

@@ -1,3 +1,5 @@
+{% load staticfiles %}
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -7,8 +9,18 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    
     <title>Wordcount</title>
+    
+    <style>
+      @font-face { font-family: 'KOMACON'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.2/KOMACON.woff') format('woff'); font-weight: normal; font-style: normal; }
+      * {
+        font-family: "KOMACON";
+      }
+    </style>
     
     <style>
         #scrollBtn {
@@ -34,9 +46,9 @@
   </head>
   <body>
       <div class="container" style="margin-top: 30px;">
-          <h2 style="margin-bottom: 20px;">당신이 입력한 텍스트는 <!--총단어수-->{{ total }}개의 단어로 구성되어 있습니다. </h2>
+          <h2 style="margin-bottom: 20px;">당신이 입력한 텍스트는 <!--총단어수-->총 <span style="color: #007bff">{{ total }}</span>개의 단어로 구성되어 있습니다. </h2>
           
-          <button type="button" class="btn btn-outline-primary"><a href="{% url 'home' %}"> 다시 하기 </a></button>
+          <a href="{% url 'home' %}" class="btn btn-outline-primary"> 다시 하기 </a>
           <br><br>
           <h4>[ 입력한 텍스트 ]</h4>
           <!-- 입력받은 전체 텍스트 -->
@@ -44,7 +56,7 @@
         
           <h4>[ 단어 카운트 ]</h4>
           <!-- '단어' - '단어나온 횟수' -->
-          <table class="table table-bordered" style="width: 40%;">
+          <table class="table table-bordered table-sm" style="width: 40%;">
               <thead>
                   <tr style="text-align: center;">
                       <th scope="col">Word</th>
@@ -55,7 +67,7 @@
                   {% for word, howmany in dictionary %}
                   <!-- 2개의 항목이 있으니까 반복자 변수 2개 사용 -->
                   <tr style="text-align: center;">
-                      <th>{{ word }}</th>
+                      <td>{{ word }}</td>
                       <td>{{ howmany }}</td>
                   </tr>
                   {% endfor %}
